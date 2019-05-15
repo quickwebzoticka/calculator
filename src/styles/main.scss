@@ -1,0 +1,264 @@
+@import "base/variables";
+@import "base/mixins";
+@import "base/typography";
+@import "vendor/normalize";
+@import "vendor/ion.rangeSlider.min";
+
+h1, h2, h3, h4, p {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    font-family: 'Proxima Nova', sans-serif;
+}
+
+.container {
+    background: #020415;
+}
+
+.calculator {
+    &-wrapper {
+        color: #FFFFFF;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 22px;
+        padding-top: 30px;
+        max-width: 1230px;
+        margin: 0 auto;
+        @include adapt(1240px) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    &-head {
+        font-size: 42px;
+        line-height: 60px;
+        font-family: 'Uni-Sans', sans-serif;
+        @include adapt(1240px) {
+            font-size: 26px;
+            line-height: 40px;
+        }
+    }
+
+    &-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include adapt(1240px) {
+            flex-direction: column;
+        }
+    }
+
+    &-column {
+        flex: 0 1 390px;
+        width: 390px;
+        @include adapt(1240px) {
+            width: 320px;
+        }
+        &:nth-child(2) {
+            margin: 0 30px;
+            @include adapt(1240px) {
+                margin: 0px;
+            }
+        }
+    }
+
+    &-head {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    &-img {
+        &-main {
+            position: relative;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            &-wrapper {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            &-inner-1 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -75%);       
+            }
+
+            &-inner-2 {
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-start;
+                width: 390px;
+                transform: translate(25px);
+                @include adapt(1240px) {
+                    transform: translate(-2px);
+                }
+            }
+
+            &-inner-3 {
+                position: absolute;
+                bottom: 4px;
+                left: 29px;
+                @include adapt(1240px) {
+                    bottom: 6px;
+                    left: 2px;
+                }
+            }
+
+
+            &-folder {
+                margin: 0 5px;
+                display: block;
+                opacity: 0;
+                transition: .4s ease;
+
+                &-row {
+                    margin-bottom: 5px;
+                    display: flex;
+                    width: 230px;
+                    height: 28px;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+            }
+
+            &-building {
+                display: block;
+                opacity: 0;
+                transition: .4s ease;
+                &:nth-child(2) {
+                    transform: translateX(-8px);
+                }
+                &:nth-child(3) {
+                    transform: translateX(-33px);
+                }
+            }
+        }
+    }
+
+    &-description {
+        position: relative;
+        background: #1C1E2D;
+        border-radius: 10px 10px 0px 0px;
+        padding: 15px 20px;
+        height: 100px; 
+        display: flex;
+        align-items: center;
+
+        &-text {
+
+
+            &-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            &__p {
+                flex: 0 1 60%;
+            }
+
+            &__count {
+                flex: 0 1 40%;
+                text-align: right;
+                font-size: 60px;
+            }
+        }
+    }
+
+    &-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 72px 0 30px;
+        @include adapt(1240px) {
+            padding: 30px 0;
+        }
+
+        &-checkbox {
+            position: relative;
+            margin-left: 30px;
+            cursor: pointer;
+
+            input {
+                display: none;
+            }
+
+            &-wrapper {
+                background: #3A2466;
+                border-radius: 16px;
+                height: 32px;
+                width: 61px;
+                transition: .4s ease;
+            }
+
+            &-circle {
+                background: linear-gradient(90deg, #6D42B9 0%, #956AE1 100%);
+                border-radius: 50%;
+                height: 32px;
+                width: 32px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition: .4s ease;
+            }
+
+            &.active {
+                .calculator-footer-checkbox-wrapper {
+                    background: linear-gradient(90deg, #6D42B9 0%, #956AE1 100%);
+                }
+
+                .calculator-footer-checkbox-circle {
+                    background: linear-gradient(142.13deg, #FFBB00 13.5%, #FF7900 94.75%);
+                    box-shadow: 0px 0px 20px #6D42B9;
+                    left: 31px;
+                }
+            }
+        }
+    }
+
+    &-range {
+
+        &-input {
+            &-wrapper {
+                position: absolute;
+                bottom: -11px;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.calculator-wrapper {
+    .irs--round .irs-handle {
+        border: none;
+        background: linear-gradient(142.13deg, #FFBB00 13.5%, #FF7900 94.75%);
+        box-shadow: 0px 0px 20px #6D42B9;
+    }
+
+    .irs--round .irs-handle .state_hover {
+        box-shadow: 0px 0px 20px 10px #6D42B9;
+    }
+
+    .irs--round .irs-bar {
+        background: linear-gradient(90deg, #6D42B9 0%, #956AE1 100%);
+        border-radius: 10px;
+    }
+
+    .irs-line {
+        background: #2B1B4D;
+        border-radius: 10px;
+    }
+}
